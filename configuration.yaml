@@ -31,7 +31,7 @@ http:
   ssl_key: /ssl/privkey.pem
   cors_allowed_origins: 
    - https://djkosmix.nl:7080
-   - https://192.168.2.4:7080
+   - http://192.168.2.4:7080
   trusted_networks:
    - 192.168.0.0/16
    - 127.0.0.1
