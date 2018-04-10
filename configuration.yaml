@@ -114,7 +114,9 @@ camera:
 # Text to speech
 tts:
   - platform: google
-
+#Binary sensor
+binary_sensor:
+  - platform: ring
 # Cloud
 cloud:
 
