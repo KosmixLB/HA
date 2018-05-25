@@ -8,8 +8,8 @@ appdaemon:
   plugins:
     HASS:
       type: hass
-      ha_url: http://hassio/homeassistant
-      ha_key: bae972f33ccb4da7b3f46401b3ca3f13
+      ha_url: https://djkosmix.nl/homeassistant
+      ha_key: !secret http_password
 hadashboard:
-  dash_url: http://127.0.0.1:5050
+  dash_url: http://127.0.0.1
   dash_dir: /config/appdaemon/dashboards
