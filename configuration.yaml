@@ -28,13 +28,7 @@ http:
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   base_url: https://djkosmix.nl:8123
   ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
-  cors_allowed_origins: 
-   - https://djkosmix.nl:7080
-   - http://192.168.2.4:7080
-  trusted_networks:
-   - 192.168.0.0/16
-   - 127.0.0.1
+  ssl_key: /ssl/privkey.pem 
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -48,12 +42,15 @@ updater:
 # Discover some devices automatically
 discovery:
 
+mqtt:
+  broker: core-mosquitto
+  username: mqttuser
+  password: !secret mqtt_password
+
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
 
 # Enables support for tracking state changes over time
-recorder:
-  purge_keep_days: 5
 history:
 
 # View all events in a logbook
@@ -61,19 +58,14 @@ logbook:
 
 # Enables a map showing the location of tracked devices
 map:
-
 # Track the sun
 sun:
 
 panel_iframe:
-  configurator:
-    title: Configurator
-    icon: mdi:wrench
-    url: http://192.168.2.4:3218
-  terminal:
-    title: Terminal
-    icon: mdi:console-line
-    url: http://192.168.2.4:7681
+  influxdb:
+    title: InfluxDB
+    icon: mdi:chart-areaspline
+    url: http://192.168.2.4:8888
 ring:
   username: arjen.kos@gmail.com
   password: !secret ring_password
@@ -120,6 +112,10 @@ binary_sensor:
 # Cloud
 cloud:
 
+ifttt:
+  key: dMFFRv3Pon74K5g1TtyWaX  
+
+recorder: !include recorder.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
